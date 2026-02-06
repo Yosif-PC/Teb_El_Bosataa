@@ -70,13 +70,13 @@ renderTable();
       let index = Array.from(row.parentNode.children).indexOf(row);
       ClientsList.splice(index, 1); // حذف الصف من المصفوفة
       row.remove();
-      
+
 
     
   }
 
   function sendClientsData() {
-    showAlert("تم الحفظ بنجاح");
     localStorage.setItem("Clients_LD", JSON.stringify(ClientsList));
+    showAlert("تم الحفظ بنجاح");
 
   }
