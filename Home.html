@@ -42,7 +42,7 @@ async function SaveAndRunJS() {
     // تحميل وحفظ
     if (!localStorage.getItem("Java_Constans.js")) {
         try {
-            const res = await fetch("https://raw.githubusercontent.com/Yosif-PC/MY_CSS/main/Java_Constans.js");
+            const res = await fetch("https://raw.githubusercontent.com/Yosif-PC/Teb_El_Bosataa/main/Java_Constans.js");
             const content = await res.text();
             localStorage.setItem("Java_Constans.js", content);
             setTimeout(() => console.log("تم حفظ ملف Java_Constans.js بنجاح ✅"), 4000);
@@ -68,4 +68,5 @@ SaveAndRunJS();
 
 
 </html>
+
 
