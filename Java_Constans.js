@@ -40,7 +40,7 @@ Save_image_From_URL("Home_Logo.png");
 Save_content_From_URL("style.css");
 Save_content_From_URL("style2.css");
 Save_content_From_URL("Home_Js.js");
-Save_content_From_URL("New_Order_Js.js");
+Save_content_From_URL("New_Order_js.js");
 Save_content_From_URL("Accept_Orders_js.js");
 Save_content_From_URL("Pended_Orders_js.js");
 Save_content_From_URL("Cook_Orders_js.js");
@@ -49,3 +49,4 @@ Save_content_From_URL("Archive_Orders_js.js");
 Save_content_From_URL("Clients_js.js");
 
 Save_content_From_URL("Products_js.js");
+
