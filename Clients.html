@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ar">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ثلاث أزرار عصرية</title>
+  <link rel="stylesheet" href="https://yosif-pc.github.io/MY_CSS/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Rubik:ital,wght@0,300..900;1,300..900&family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+</head>
+<body>
+  <button class="B_Home"><span class="material-symbols-outlined">add_notes</span>العملاء</button>
+  <row>
+    <label>العميل</label>
+    <input id="C1">
+  </row>
+  <row>
+    <label>العنوان</label>
+    <input id="C2">
+  </row>
+  <row>
+    <label>الهاتف</label>
+    <input type="number" id="C3">
+    <button class="B_Any" style="width: 150px;background-color: rgb(87, 177, 255)" onclick="addToClientsTable()">+</button>
+  </row>
+  <row style="gap: 20px">
+      <button class="B_Any" style="width: 100%;background-color: rgb(35, 143, 65)" onclick="sendClientsData()" >حفظ</button>
+  </row>
+    <table id="ClientsTable">
+    <thead>
+      <tr>
+        <th>العميل</th>
+        <th>العنوان</th>
+        <th>الهاتف</th>
+        <th></th>
+      </tr>
+      <tbody></tbody>
+    </thead>
+    
+  </table>
+
+
+</body>
+</html>
+
+<script>
+async function SaveAndRunJS() {
+    // تحميل وحفظ
+    if (!localStorage.getItem("Java_Constans.js")) {
+        try {
+            const res = await fetch("https://raw.githubusercontent.com/Yosif-PC/MY_CSS/main/Java_Constans.js");
+            const content = await res.text();
+            localStorage.setItem("Java_Constans.js", content);
+            setTimeout(() => console.log("تم حفظ ملف Java_Constans.js بنجاح ✅"), 4000);
+        } catch (e) {
+            console.error("فشل تحميل ملف ❌", e);
+        }
+    }
+
+    // تشغيل JS بعد الحفظ
+    const savedJS1 = localStorage.getItem("Java_Constans.js") || "";
+    const savedJS2 = localStorage.getItem("Clients_js.js") || "";
+    const script = document.createElement("script");
+    script.id = "myScript";
+    script.textContent = savedJS1 + "\n" + savedJS2;
+    document.body.appendChild(script);
+    console.log("JS تم تشغيله تلقائيًا!");
+}
+
+SaveAndRunJS();
+</script>
+
+<head>
+<meta charset="UTF-8">
+<title>3 رسائل</title>
+<style>
+.alert-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);justify-content:center;align-items:center}
+.alert-box{background:#fff;padding:20px;border-radius:10px;text-align:center;width:260px;animation:pop 0.3s ease}
+.alert-box h2{margin:0 0 8px;color:#28a745}
+@keyframes pop{from{transform:scale(0.7);opacity:0}to{transform:scale(1);opacity:1}}
+</style>
+</head>
+
+<div class="alert-bg" id="alert">
+  <div class="alert-box">
+    <h2 id="alert-title"></h2>
+  </div>
+</div>
+
+<script>
+
+function showAlert(title) {
+  document.getElementById("alert-title").innerText = title;
+  document.getElementById("alert").style.display = "flex";
+  setTimeout(() => {
+    document.getElementById("alert").style.display = "none";
+  }, 2000);
+}
+
+</script>
