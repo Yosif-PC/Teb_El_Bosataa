@@ -1,7 +1,7 @@
 function Save_image_From_URL(Image_Name) {
     if (localStorage.getItem(Image_Name)) return;
     
-fetch("https://raw.githubusercontent.com/Yosif-PC/MY_CSS/main/"+Image_Name)
+fetch("https://raw.githubusercontent.com/Yosif-PC/Teb_El_Bosataa/main/"+Image_Name)
     .then(res => res.blob())
     .then(blob => {
         const reader = new FileReader();
@@ -24,7 +24,7 @@ fetch("https://raw.githubusercontent.com/Yosif-PC/MY_CSS/main/"+Image_Name)
 function Save_content_From_URL(Data_Name){
     if (localStorage.getItem(Data_Name)) return;
 
-fetch("https://raw.githubusercontent.com/Yosif-PC/MY_CSS/main/"+Data_Name)
+fetch("https://raw.githubusercontent.com/Yosif-PC/Teb_El_Bosataa/main/"+Data_Name)
     .then(res => res.text())
     .then(Content => {
         localStorage.setItem(Data_Name, Content); // حفظ فقط
@@ -47,4 +47,5 @@ Save_content_From_URL("Cook_Orders_js.js");
 Save_content_From_URL("Delivary_Orders_js.js");
 Save_content_From_URL("Archive_Orders_js.js");
 Save_content_From_URL("Clients_js.js");
+
 Save_content_From_URL("Products_js.js");
