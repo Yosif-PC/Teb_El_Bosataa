@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ar">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>طب البسطاء</title>
+</head>
+
+<body>
+
+<button class="B_Home">تأكيد الطلبات</button>
+<!-- Popup للـ Invoice_List -->
+<div id="popup_invoices" class="popup" hidden="true">
+  <div class="popup-content" role="dialog" aria-labelledby="title_invoices">
+    <h3 id="title_invoices">قائمة الفواتير</h3>
+
+    <input type="text" id="search_invoices" class="search-box" placeholder="ابحث عن رقم الفاتورة أو اسم العميل..." oninput="filterInvoiceList(this.value)">
+
+    <div class="popup-list" id="list_invoices">
+      <!-- سيتم ملؤه تلقائيًا بواسطة JS -->
+    </div>
+
+    <div id="no_invoices" class="no-results" style="display:none;">لا توجد نتائج</div>
+  </div>
+</div>
+
+
+<bodyPrint id="Print_Area">
+
+<label style="color:black;">فاتورة طلبات عميل طب البسطاء</label>
+
+<!-- بيانات الفاتورة -->
+<table>
+  <thead>
+    <tr>
+      <th>رقم الفاتورة</th>
+      <th>اسم العميل</th>
+    </tr>
+  </thead>
+  <tbody id="invoiceInfo"></tbody>
+
+  <thead>
+    <tr>
+      <th>عنوان التوصيل</th>
+      <th>رقم الهاتف</th>
+    </tr>
+  </thead>
+  <tbody id="clientInfo"></tbody>
+</table>
+
+<br>
+
+<!-- الأصناف -->
+<table>
+  <thead>
+    <tr>
+      <th>الصنف</th>
+      <th>الكمية</th>
+      <th>السعر</th>
+      <th>الإجمالي</th>
+    </tr>
+  </thead>
+  <tbody id="itemsTable"></tbody>
+</table>
+
+<br>
+
+<!-- الملخص -->
+<table>
+  <thead>
+    <tr>
+      <th>ثمن الأصناف</th>
+      <th>التوصيل</th>
+      <th>الخصم</th>
+      <th>المطلوب</th>
+    </tr>
+  </thead>
+  <tbody id="summaryTable"></tbody>
+</table>
+
+</bodyPrint>
+
+<row>
+  <button class="B_Any" style="width: 100%;  height:60px" onclick="Accepted()">✔️</button>
+  <button class="B_Any" style="width: 100%; height:60px" onclick="Rejected()">❌</button>
+  <button class="B_Any" style="width: 100%; height:60px" onclick="Open_Whatsapp()">💬</button>
+  <button class="B_Any" style="width: 100%;  height:60px" id="window.print">💾</button>
+
+
+</row>
+<script>
+async function SaveAndRunJS() {
+    // تحميل وحفظ
+    if (!localStorage.getItem("Java_Constans.js")) {
+        try {
+            const res = await fetch("https://raw.githubusercontent.com/Yosif-PC/MY_CSS/main/Java_Constans.js");
+            const content = await res.text();
+            localStorage.setItem("Java_Constans.js", content);
+            setTimeout(() => console.log("تم حفظ ملف Java_Constans.js بنجاح ✅"), 4000);
+        } catch (e) {
+            console.error("فشل تحميل ملف ❌", e);
+        }
+    }
+
+    // تشغيل JS بعد الحفظ
+    const savedJS1 = localStorage.getItem("Java_Constans.js") || "";
+    const savedJS2 = localStorage.getItem("Accept_Orders_js.js") || "";
+    const script = document.createElement("script");
+    script.id = "myScript";
+    script.textContent = savedJS1 + "\n" + savedJS2;
+    document.body.appendChild(script);
+    console.log("JS تم تشغيله تلقائيًا!");
+}
+
+SaveAndRunJS();
+
+</script>
+
+
+
+<head>
+<meta charset="UTF-8">
+<title>3 رسائل</title>
+<style>
+.alert-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);justify-content:center;align-items:center}
+.alert-box{background:#fff;padding:20px;border-radius:10px;text-align:center;width:260px;animation:pop 0.3s ease}
+.alert-box h2{margin:0 0 8px;color:#28a745}
+@keyframes pop{from{transform:scale(0.7);opacity:0}to{transform:scale(1);opacity:1}}
+</style>
+</head>
+
+<div class="alert-bg" id="alert">
+  <div class="alert-box">
+    <h2 id="alert-title"></h2>
+  </div>
+</div>
+
+<script>
+
+function showAlert(title) {
+  document.getElementById("alert-title").innerText = title;
+  document.getElementById("alert").style.display = "flex";
+  setTimeout(() => {
+    document.getElementById("alert").style.display = "none";
+  }, 2000);
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
